@@ -15,14 +15,13 @@ namespace MorseCode
             Console.Write("Input: ");
             string inputPhase = Console.ReadLine();
             Console.WriteLine();
-            Console.Write("Output: ");           
+            Console.Write("Output: ");
 
-            MorseCode m = new MorseCode();
-            Console.WriteLine(m.Encode(inputPhase));
+            string encodedPhrase = MorseCode.Encode(inputPhase);
+            Console.WriteLine(encodedPhrase);
 
             Console.WriteLine();
             Console.ReadLine();
-
         }
     }
 }

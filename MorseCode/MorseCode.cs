@@ -48,7 +48,7 @@ namespace MorseCode
             {"9", "----."},
         };
 
-        public string EncodeChar(char letter)
+        public static string EncodeChar(char letter)
         {
             string letterAsString = letter.ToString();
             if (morse.Keys.Any(key => key.Equals(letterAsString, StringComparison.OrdinalIgnoreCase)))
@@ -60,7 +60,7 @@ namespace MorseCode
         }
 
 
-        public string Encode(string inputPhrase)
+        public static string Encode(string inputPhrase)
         {
             string encodedPhrase = "";
             foreach (char letter in inputPhrase)
