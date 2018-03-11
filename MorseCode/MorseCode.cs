@@ -56,7 +56,7 @@ namespace MorseCode
                 return morse[letterAsString.ToUpperInvariant()];
             }
 
-            return null;
+            return "<?>";
         }
 
 
