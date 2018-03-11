@@ -8,7 +8,7 @@ namespace MorseCode
 {
     class Program
     {
-        private static Dictionary<string, string> morse = new Dictionary<string, string>() {
+        private static readonly Dictionary<string, string> morse = new Dictionary<string, string>() {
                 {"A", ".-"},
                 {"B", "-..."},
                 {"C", "-.-."},
@@ -56,12 +56,12 @@ namespace MorseCode
             Console.WriteLine();
             Console.Write("Output: ");           
 
-            for (int i = 0; i < input.Length; i++)
-            {                
-                string c = input[i].ToString();
-                if (morse.Keys.Any(key => key.Equals(c, StringComparison.OrdinalIgnoreCase)))
+            foreach (char c in input)
+            {
+                string letter = c.ToString();
+                if (morse.Keys.Any(key => key.Equals(letter, StringComparison.OrdinalIgnoreCase)))
                 {
-                    Console.Write(morse[c.ToUpperInvariant()]);
+                    Console.Write(morse[letter.ToUpperInvariant()]);
                 }
             }
             Console.WriteLine();
