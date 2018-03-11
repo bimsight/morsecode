@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,7 +9,7 @@ namespace MorseCode
 {
     class MorseCode
     {
-        private static readonly Dictionary<string, string> morse = new Dictionary<string, string>()
+        public static readonly Dictionary<string, string> morse = new Dictionary<string, string>()
         {
             {"A", ".-"},
             {"B", "-..."},
@@ -56,7 +57,7 @@ namespace MorseCode
                 return morse[letterAsString.ToUpperInvariant()];
             }
 
-            return "<?>";
+            return "<unsupported latin letter>";
         }
 
 
@@ -69,6 +70,31 @@ namespace MorseCode
             }
 
             return encodedPhrase;
+        }
+
+        public static string Decode(string encodedPhrase)
+        {
+            string decodedPhrase = "";
+            string[] encodedLetters = encodedPhrase.Split(' ');
+            foreach (string encodedLetter in encodedLetters)
+            {
+                decodedPhrase = decodedPhrase + DecodeLetter(encodedLetter);
+            }
+
+            return decodedPhrase;
+        }
+
+        public static string DecodeLetter(string encodedLetter)
+        {
+            foreach (KeyValuePair<string, string> row in morse)
+            {
+                if (row.Value.Equals(encodedLetter))
+                {
+                    return row.Key;
+                }
+            }
+
+            return "<unknown morse letter>";
         }
     }
 }
